@@ -4,7 +4,7 @@
   },
   "Storage": {
     "Timeout": 168,
-    "Key": "cricket",
+    "Key": "pof",
     "ResetKey": "20220606"
   },
   "isServed": true
