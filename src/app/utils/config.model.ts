@@ -5,20 +5,11 @@ export interface IConfig {
    API: {
       apiRoot: string;
    };
-   Auth: {
-      userAccessKey: string;
-   };
+
    Storage: {
       Timeout: number;
       Key: string;
       ResetKey: string;
-   };
-   Res: {
-      languages?: { name: string, display: string; }[];
-      cookieName: string;
-   };
-   Seo: {
-      gaEnabled: boolean;
    };
 
 }

@@ -3,32 +3,12 @@
     "API": {
         "apiRoot": "https://:projectid.api.sanity.io/v2021-10-21/data/query/:dataset?query="
     },
-    "Auth": {
-        "userAccessKey": "user"
-    },
+
     "Storage": {
         "Timeout": 168,
-        "Key": "cricket",
+        "Key": "pof",
         "ResetKey": "20220606"
     },
-    "Seo": {
-        "gaEnabled": true
-    },
-    "isServed": true,
-    "GTM": {
-      "isEnabled": true
-    },
-    "Res": {
-      "cookieName": "cr-lang",
-      "languages": [
-        {
-          "name": "en",
-          "display": "English"
-        },
-        {
-          "name": "ar",
-          "display": "عربي"
-        }
-      ]
-    }
+    "isServed": true
+
 }

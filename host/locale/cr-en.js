@@ -42,11 +42,12 @@
          HOME_TITLE: 'Home',
          HOME: 'Home'
       },
+      SITE_NAME: 'Israel Pants on Fire',
       PAGE_TITLES: {
          ERROR: 'Oh oh, an error occurred',
          NOT_FOUND: '404! Hmm! Once in a while, we change address and forget to update the mailman.'
       },
-      DEFAULT_PAGE_TITLE: 'Welcome',
+      DEFAULT_PAGE_TITLE: 'Hasbara Lies',
       // inject:translations
       // endinject
    };

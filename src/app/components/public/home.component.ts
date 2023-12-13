@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable, switchMap, tap } from 'rxjs';
+import { Config } from '../../config';
 import { ResPipe } from '../../lib/pipes/res.pipe';
 import { IContent } from '../../models/content.model';
 import { IListOptions } from '../../models/list.model';
@@ -43,7 +44,7 @@ export class PublicHomeComponent implements OnInit {
             switchMap(list => this.postListState.appendList(list.matches)),
         );
 
-        this.paramState.SetState({page: 1, size: 8});
+        this.paramState.SetState({page: 1, size: Config.Basic.defaultSize});
         this.extraParams$ = this.extraParams.stateItem$;
     }
     getPage(): void {
