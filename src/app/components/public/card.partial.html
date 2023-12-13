@@ -1,0 +1,9 @@
+<ng-container *ngIf="post">
+    <h6 class="f6 spaced">{{ post.title }}</h6>
+    <picture class="image" *ngIf="post.image">
+        <img [src]="defaultImage" [crLazy]="post.image | sanityimage:'Medium'" [options]="{fallBack: defaultImage}" />
+    </picture>
+
+    <div [innerHTML]="post.content | tohtml"></div>
+
+</ng-container>

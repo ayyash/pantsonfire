@@ -1,0 +1,157 @@
+{
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "cricketweb": {
+      "root": "",
+      "sourceRoot": "src",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "less"
+        },
+        "@schematics/angular:application": {
+          "strict": true
+        }
+      },
+      "projectType": "application",
+      "prefix": "cr",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist",
+            "resourcesOutputPath": "assets/",
+            "allowedCommonJsDependencies": ["express"],
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "styles": [
+                {
+                  "input": "src/assets/css/pof.css",
+                  "bundleName": "styles"
+                }
+              ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["./raw/less", "./node_modules/shut/src/less"]
+            },
+            "scripts": [
+              {
+                "input": "src/assets/js/cricket.js",
+                "bundleName": "cricket"
+              }
+            ],
+            "assets": [
+              {
+                "glob": "favicon.ico",
+                "input": "src",
+                "output": "/"
+              },
+              {
+                "glob": "cr-en.js",
+                "input": "src/locale",
+                "output": "/locale"
+              },
+              {
+                "glob": "images/**/*",
+                "input": "src/assets",
+                "output": "/assets"
+              },
+              {
+                "glob": "*.json",
+                "input": "configs",
+                "output": "/localdata"
+              }
+            ]
+          },
+          "configurations": {
+            "serve": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true,
+              "commonChunk": true,
+              "aot": true
+
+            },
+
+            "production": {
+              "outputPath": "./host/",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": {
+                "scripts": true,
+                "fonts": false,
+                "styles": true
+              },
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "deleteOutputPath": true,
+              "assets": [
+                {
+                  "glob": "favicon.ico",
+                  "input": "src",
+                  "output": "/"
+                },
+                {
+                  "glob": "images/**/*",
+                  "input": "src/assets",
+                  "output": "/assets"
+                },
+                {
+                  "glob": "cr-en.js",
+                  "input": "src/locale",
+                  "output": "/locale"
+                },
+                {
+                    "glob": "config.prod.json",
+                    "input": "configs",
+                    "output": "/localdata"
+                },
+                {
+                  "glob": "vercel.json",
+                  "input": "./",
+                  "output": "/"
+                }
+              ],
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "buildTarget": "cricketweb:build:serve"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "cricketweb:build:serveProduction"
+            }
+          }
+        }
+      }
+    }
+  }
+}
