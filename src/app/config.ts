@@ -5,7 +5,7 @@ export const Config = {
     isServed: false,
     Basic: {
         country: 'jo',
-        defaultSize: 8,
+        defaultSize: 20,
         // defaultDateFormt: 'DD-MM-YYYY',
         defaultToastTimeout: 5000,
         lockTimeout: 400,

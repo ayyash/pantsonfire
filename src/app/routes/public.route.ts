@@ -7,7 +7,7 @@ export const PublicRoutes: Routes = [
     {
         path: '',
         component: PublicHomeComponent,
-        title: 'SITE_NAME'
+        title: 'HOME'
     }
     // **gulproute**
 ];

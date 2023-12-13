@@ -72,9 +72,6 @@ export class LazyDirective implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     // show default before loading
-
-
-
     ngAfterViewInit() {
 
         if (!this.crLazy && this.options.fallBack) {
