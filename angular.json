@@ -121,7 +121,7 @@
                 },
                 {
                   "glob": "vercel.json",
-                  "input": "./",
+                  "input": "src/",
                   "output": "/"
                 }
               ],

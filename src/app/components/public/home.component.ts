@@ -39,7 +39,7 @@ export class PublicHomeComponent implements OnInit {
     ngOnInit(): void {
 
         this.seoService.setDescription(Res.Get('HOME_DESCRIPTION'));
-        this.seoService.setImage(Config.Basic.url +  '/assets/images/metapof.jpg');
+        this.seoService.setImage(Config.Basic.url +  '/assets/images/metapof.jpeg');
         this.list$ = this.paramState.stateItem$.pipe(
             switchMap(options => this.postService.GetPosts(options)),
             tap(list => {
