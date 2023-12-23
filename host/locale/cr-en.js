@@ -45,7 +45,8 @@
             NOT_FOUND: '404! Hmm! Once in a while, we change address and forget to update the mailman.'
         },
         DEFAULT_PAGE_TITLE: 'Hasbara Lies',
-        SITE_NAME: 'Israel Pants on Fire'
+        SITE_NAME: 'Israel Pants on Fire',
+        HOME_DESCRIPTION: 'Following are lies produced by the Hasbara for the purpose of creating confusion about the Palestinian struggle. This is all a diversion, and debunking those lies is not even worth it.',
         // inject:translations
         // endinject
     };

@@ -37,10 +37,10 @@ export class SeoService {
       this.meta.updateTag({ property: 'twitter:title', content: _title });
 
    }
-   protected setDescription(description: string) {
+   public setDescription(description: string) {
       this.meta.updateTag({ name: 'description', property: 'og:description', content: description });
    }
-   protected setImage(imageUrl?: string) {
+   public setImage(imageUrl?: string) {
       // prepare image, either passed or
       const _imageUrl = imageUrl;
 
