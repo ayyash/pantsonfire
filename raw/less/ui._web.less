@@ -35,3 +35,26 @@ h5 {
 .allcaps {
     text-transform: uppercase;
 }
+button {
+    appearance: none;
+    border: none;
+    background: transparent;
+}
+.modal-close {
+    transform: rotate(180deg);
+    cursor: pointer;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    display: inline-block;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid @red;
+    margin: 0 auto;
+}
+.tilt {
+    transform: rotate(45deg);
+    vertical-align: text-top;
+}

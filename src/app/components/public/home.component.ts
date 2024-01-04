@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable, switchMap, tap } from 'rxjs';
 import { Config } from '../../config';
+import { DialogService } from '../../lib/dialog/service';
 import { ResPipe } from '../../lib/pipes/res.pipe';
 import { IContent } from '../../models/content.model';
 import { IListOptions } from '../../models/list.model';
@@ -15,6 +16,7 @@ import { SeoService } from '../../utils/seo.service';
 import { ContentPartialComponent } from '../common/content.partial';
 import { PagerPartialComponent } from '../common/pager.partial';
 import { PublicCardPartialComponent } from './card.partial';
+import { PublicContentDialogComponent } from './content.dialog';
 
 @Component({
 
@@ -31,6 +33,7 @@ export class PublicHomeComponent implements OnInit {
     content$: Observable<IContent[]>;
     constructor( private postService: PostService,
         private postListState: PostListState,
+        private dialogService: DialogService,
         private seoService: SeoService,
         private paramState: ParamState) {
         //
@@ -39,7 +42,7 @@ export class PublicHomeComponent implements OnInit {
     ngOnInit(): void {
 
         this.seoService.setDescription(Res.Get('HOME_DESCRIPTION'));
-        this.seoService.setImage(Config.Basic.url +  '/assets/images/metapof.jpeg');
+        this.seoService.setImage(Config.Basic.url +  '/assets/images/pofbg.jpg');
         this.list$ = this.paramState.stateItem$.pipe(
             switchMap(options => this.postService.GetPosts(options)),
             tap(list => {
@@ -58,6 +61,13 @@ export class PublicHomeComponent implements OnInit {
         this.paramState.UpdateState({page: this.paramState.currentItem.page + 1});
     }
 
+    openDialog(): void {
+        this.dialogService.open(PublicContentDialogComponent, {
+            title: '',
+            css: 'modal-bottom-sheet animate frombottom',
+            data: 'what-about-october-7'
+        })
+    }
 
    trackByFn(index: number, item: IPost) {
     return item.id;

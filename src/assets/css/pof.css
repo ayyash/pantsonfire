@@ -1415,6 +1415,161 @@ a.label-grey-dark:hover {
   border-radius: var(--sh-label-radius);
   display: inline-block;
 }
+:root {
+  --sh-start: -100%;
+  --sh-end: 100%;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--sh-modal-index-10);
+  background-color: var(--sh-modal-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  background-color: var(--sh-white);
+  z-index: var(--sh-modal-zindex);
+  overflow: hidden;
+  outline: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-clip: padding-box;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.3);
+  max-height: calc(100dvh - var(--sh-modal-margin) * 2);
+  width: calc(100dvw - var(--sh-modal-margin) * 2);
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--sh-modal-padding);
+}
+.modal-body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: var(--sh-modal-padding);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  overscroll-behavior: contain;
+}
+.modal-body::-webkit-scrollbar {
+  width: var(--sh-modal-scrollbar-width);
+  height: var(--sh-modal-scrollbar-width);
+}
+.modal-body::-webkit-scrollbar-button:start:decrement,
+.modal-body::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 0;
+  background-color: transparent;
+}
+.modal-body::-webkit-scrollbar-track-piece {
+  background-color: #f3f3f3;
+  border-radius: 0;
+  border-end-end-radius: 8px;
+  border-end-start-radius: 8px;
+}
+.modal-body::-webkit-scrollbar-thumb:vertical {
+  height: 50px;
+  background-color: #263238;
+  border-radius: 8px;
+}
+.modal-body::-webkit-scrollbar-thumb:horizontal {
+  width: 50px;
+  background-color: #263238;
+  border-radius: 8px;
+}
+.modal-footer {
+  padding: var(--sh-modal-padding);
+}
+.modal-bottom-sheet .modal-overlay {
+  align-items: flex-end;
+}
+.modal-full-height .modal {
+  height: calc(100dvh - var(--sh-modal-margin) * 2);
+}
+.modal-full-screen .modal {
+  min-height: 100dvh;
+  max-height: 100dvh;
+  min-width: 100dvw;
+  max-width: 100dvw;
+  margin: 0;
+}
+.modal-half-screen .modal-overlay {
+  justify-content: flex-start;
+}
+.modal-half-screen .modal {
+  width: 90dvw;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+}
+.animate.fromstart .modal {
+  transform: translateX(var(--sh-start));
+  animation: fromstart 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  animation-fill-mode: forwards;
+}
+.animate.fromend .modal-overlay {
+  justify-content: flex-end;
+}
+.animate.fromend .modal {
+  transform: translateX(var(--sh-end));
+  animation: fromend 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  animation-fill-mode: forwards;
+}
+.animate.fromtop .modal {
+  transform: translateY(-100%);
+  animation: fromtop 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  animation-fill-mode: forwards;
+}
+.animate.frombottom .modal {
+  transform: translateY(100%);
+  animation: frombottom 0.15s cubic-bezier(0.4, 0, 0.2, 1) 0.15s;
+  animation-fill-mode: forwards;
+}
+@media only screen and (min-width: 720px) {
+  .modal {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+  .modal-half-screen .modal {
+    width: 50dvw;
+  }
+}
+@keyframes fromstart {
+  from {
+    transform: translateX(var(--sh-start));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes fromend {
+  from {
+    transform: translateX(var(--sh-end));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@keyframes frombottom {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fromtop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 /* font setting */
 /* CRITICAL BEGIN */
 html {
@@ -1659,6 +1814,30 @@ h5 {
 }
 .allcaps {
   text-transform: uppercase;
+}
+button {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  background: transparent;
+}
+.modal-close {
+  transform: rotate(180deg);
+  cursor: pointer;
+}
+.triangle {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 8px solid #f31109;
+  margin: 0 auto;
+}
+.tilt {
+  transform: rotate(45deg);
+  vertical-align: text-top;
 }
 .forprint {
   display: none;

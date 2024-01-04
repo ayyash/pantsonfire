@@ -3,16 +3,16 @@
         <div class="row-spaced spaced">
             <div class="col md-4">
                 <h1 class="f5 weight-black allcaps spaced">Israel Pants on fire</h1>
-                <pof-content [id]="'pretext'"></pof-content>
+                <h5 class="f6 weight-normal cam" (click)="openDialog()">What about October 7?
+                    <span class="triangle tilt"></span>
+                </h5>
             </div>
             <div class="col md-8">
                 <pof-content [id]="'main'"></pof-content>
             </div>
 
         </div>
-        <div class="spaced">
-            <pof-content [id]="'subtext'"></pof-content>
-        </div>
+
 
         <ng-container *ngIf="list$ | async as posts">
             <ul class="row ucol umd-3 boxed">
@@ -25,5 +25,6 @@
             </ng-container>
 
         </ng-container>
+
     </div>
 </div>
