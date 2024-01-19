@@ -22,16 +22,16 @@
             "outputPath": "dist",
             "resourcesOutputPath": "assets/",
             "allowedCommonJsDependencies": ["express"],
-            "index": "src/index.html",
+            "index": {"output": "preindex.html", "input": "src/index.html"},
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "styles": [
-                {
-                  "input": "src/assets/css/pof.css",
-                  "bundleName": "styles"
-                }
-              ],
+              {
+                "input": "src/assets/css/pof.css",
+                "bundleName": "styles"
+              }
+            ],
             "stylePreprocessorOptions": {
               "includePaths": ["./raw/less", "./node_modules/shut/src/less"]
             },
@@ -74,7 +74,6 @@
               "namedChunks": true,
               "commonChunk": true,
               "aot": true
-
             },
 
             "production": {
@@ -115,11 +114,10 @@
                   "output": "/locale"
                 },
                 {
-                    "glob": "config.prod.json",
-                    "input": "configs",
-                    "output": "/localdata"
+                  "glob": "config.prod.json",
+                  "input": "configs",
+                  "output": "/localdata"
                 }
-
               ],
               "budgets": [
                 {
@@ -144,6 +142,34 @@
           "configurations": {
             "production": {
               "buildTarget": "cricketweb:build:serveProduction"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "./server/ng/",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": ["./raw/less", "./node_modules/shut/src/less"]
+            }
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": false,
+              "outputHashing": "media",
+              "sourceMap": false,
+              "namedChunks": true,
+              "extractLicenses": true,
+              "deleteOutputPath": false,
+              "buildOptimizer": false
             }
           }
         }

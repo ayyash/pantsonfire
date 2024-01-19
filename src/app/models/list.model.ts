@@ -13,8 +13,6 @@ export interface IList<T extends IListItem> {
 
 export interface IListOptions {
     page?: number;
-    keyword?: string;
-    country?: string;
     size?: number;
     total?: number;
     hasMore?: boolean;
@@ -29,8 +27,6 @@ export class ListOptions {
 
         return {
             ref: options.ref,
-            k: options.keyword,
-            c: options.country,
             p: options.page || 1,
             s: options.size || Config.Basic.defaultSize
         };

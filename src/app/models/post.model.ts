@@ -32,10 +32,20 @@ export class Post {
                 "total": count(*[_type == "post"])
                 }
             `;
+    }
 
+    public static PrepSingle(slug: string): string {
 
+        return `*[slug.current == "${slug}" && _type=="post"] | order(publishedAt desc)
+            {publishedAt, _id,
+                "mainImage":mainImage.asset->url,
+                "slug": slug.current,
+                title,
+                body[]
+            }[0]`;
     }
     public static NewInstance(post: any): IPost {
+
         return {
             id: post._id,
             slug: post.slug,

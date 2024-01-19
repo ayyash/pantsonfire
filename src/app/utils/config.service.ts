@@ -39,9 +39,9 @@ export class ConfigService {
         const _config = { ...Config, ...<IConfig>config };
         _config.Storage = { ..._config.Storage };
         _config.isServed = true;
-        _config.API.apiRoot = _config.API.apiRoot
-            .replace(':projectid', Config.Sanity.ProjectId)
-            .replace(':dataset', Config.Sanity.Dataset);
+        // _config.API.apiRoot = _config.API.apiRoot
+        //     .replace(':projectid', Config.Sanity.ProjectId)
+        //     .replace(':dataset', Config.Sanity.Dataset);
         _config.withErrors = withError; // so now we can distinguish where the config really came from
 
         // populate static element

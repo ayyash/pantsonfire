@@ -11,7 +11,6 @@ import { ParamState } from '../../services/param.state';
 import { PostService } from '../../services/post.service';
 import { PostListState } from '../../services/post.state';
 import { hasMore } from '../../utils/common';
-import { Res } from '../../utils/resources';
 import { SeoService } from '../../utils/seo.service';
 import { ContentPartialComponent } from '../common/content.partial';
 import { PagerPartialComponent } from '../common/pager.partial';
@@ -41,8 +40,8 @@ export class PublicHomeComponent implements OnInit {
     }
     ngOnInit(): void {
 
-        this.seoService.setDescription(Res.Get('HOME_DESCRIPTION'));
-        this.seoService.setImage(Config.Basic.url +  '/assets/images/pofbg.jpg');
+        this.seoService.setHome();
+
         this.list$ = this.paramState.stateItem$.pipe(
             switchMap(options => this.postService.GetPosts(options)),
             tap(list => {

@@ -6,24 +6,29 @@
         "start": "ng serve  --port 5300 --watch  --live-reload false",
         "start:rtl": "ng serve  --configuration=rtl --port 5100 --watch  --live-reload false",
         "start:prod": "ng serve --configuration=production --port 5100 --watch  --live-reload false",
-        "build": "ng build --configuration=production"
+        "build": "ng build --configuration=production",
+        "build:server": "ng run cricketweb:server:production",
+        "build:ssr": "npm run build && npm run build:server"
+
     },
     "dependencies": {
-        "@angular/common": "^17.0.6",
-        "@angular/compiler": "^17.0.6",
-        "@angular/core": "^17.0.6",
-        "@angular/forms": "^17.0.6",
-        "@angular/platform-browser": "^17.0.6",
-        "@angular/platform-browser-dynamic": "^17.0.6",
-        "@angular/router": "^17.0.6",
+        "@angular/common": "^17.1.0",
+        "@angular/compiler": "^17.1.0",
+        "@angular/core": "^17.1.0",
+        "@angular/forms": "^17.1.0",
+        "@angular/platform-browser": "^17.1.0",
+        "@angular/platform-browser-dynamic": "^17.1.0",
+        "@angular/platform-server": "^17.1.0",
+        "@angular/router": "^17.1.0",
+        "@angular/ssr": "^17.1.0",
         "@portabletext/to-html": "^2.0.5",
         "rxjs": "^7.8.1",
         "shut": "^7.0.3",
-        "zone.js": "^0.14.2"
+        "zone.js": "^0.14.3"
     },
     "devDependencies": {
-        "@angular-devkit/build-angular": "^17.0.6",
-        "@angular/cli": "^17.0.6",
-        "@angular/compiler-cli": "^17.0.6"
+        "@angular-devkit/build-angular": "^17.1.0",
+        "@angular/cli": "^17.1.0",
+        "@angular/compiler-cli": "^17.1.0"
     }
 }

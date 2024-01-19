@@ -1,0 +1,10 @@
+<div class="page">
+    <div class="container">
+        <div *ngIf="post$ | async as post">
+            <div class="spaced">
+                <a routerLink="/"><span class="triangle"></span> Israel Pants on Fire</a>
+            </div>
+            <pof-post-details [post]="post"></pof-post-details>
+        </div>
+    </div>
+</div>

@@ -6,6 +6,7 @@
 /out-tsc
 /fontfiles
 /.angular
+/server
 
 # dependencies
 /node_modules

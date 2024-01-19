@@ -28,5 +28,19 @@ export class PostService {
         );
     }
 
+    // mostly for SEO
+    @DataCache({key: 'post', expiresin: 1, withArgs: true})
+    GetPost(slug: string): Observable<IPost> {
+
+        const _url = Post.PrepSingle(slug);
+        // first get the getposts it might be there
+
+        return this._http.get(_url).pipe(
+            map(response => {
+                return Post.NewInstance((<any>response).result);
+            })
+        );
+    }
+
 
 }

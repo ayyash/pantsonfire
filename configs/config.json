@@ -1,7 +1,7 @@
 {
 
     "API": {
-        "apiRoot": "https://:projectid.api.sanity.io/v2021-10-21/data/query/:dataset?query="
+        "apiRoot": "https://vjoh9zmj.api.sanity.io/v2021-10-21/data/query/production?query="
     },
 
     "Storage": {
