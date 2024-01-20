@@ -117,7 +117,8 @@
                   "glob": "config.prod.json",
                   "input": "configs",
                   "output": "/localdata"
-                }
+                },
+                "src/vercel.json"
               ],
               "budgets": [
                 {
