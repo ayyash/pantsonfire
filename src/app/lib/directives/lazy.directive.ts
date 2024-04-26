@@ -9,6 +9,7 @@ import {
     Renderer2,
     SimpleChanges
 } from '@angular/core';
+import { Platform } from '../../utils/platform.service';
 
 interface IOptions {
     threshold?: number;
@@ -32,7 +33,8 @@ export class LazyDirective implements AfterViewInit, OnChanges, OnDestroy {
 
     constructor(
         private el: ElementRef,
-        private renderer: Renderer2
+        private renderer: Renderer2,
+        private platform: Platform
     ) { }
 
     private setImage(src: string) {
@@ -86,6 +88,8 @@ export class LazyDirective implements AfterViewInit, OnChanges, OnDestroy {
             this.renderer.addClass(this.el.nativeElement, this.options.nullCss);
         }
 
+        if (!this.platform.isBrowser) return;
+
         this.io = new IntersectionObserver((entries, observer) => {
             const _entry = entries.find((entry) => entry.isIntersecting);
 
@@ -103,6 +107,7 @@ export class LazyDirective implements AfterViewInit, OnChanges, OnDestroy {
 
 
     ngOnChanges(c: SimpleChanges) {
+        if (!this.platform.isBrowser) return;
         // _attn(c, 'onchanges');
         if (c.crLazy.firstChange) {
             // act normally
@@ -115,6 +120,7 @@ export class LazyDirective implements AfterViewInit, OnChanges, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        if(!this.platform.isBrowser) return;
         this.io?.disconnect();
         this.io = null;
     }
